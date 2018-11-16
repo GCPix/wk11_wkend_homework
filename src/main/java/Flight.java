@@ -35,4 +35,12 @@ public class Flight {
             this.passengerList.add(passenger);
         }
     }
+
+    public int getFlightWeight() {
+        return this.plane.getPlaneWeight();
+    }
+
+    public int getFlightCapacity() {
+        return this.plane.getPlaneCapacity();
+    }
 }
