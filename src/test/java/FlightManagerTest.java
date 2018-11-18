@@ -2,6 +2,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class FlightManagerTest {
 
@@ -17,7 +18,7 @@ public class FlightManagerTest {
         passenger2 = new Passenger("Dana", 1);
         passenger3 = new Passenger("peter", 5);
         plane = new Plane(PlaneType.BOEING747);
-        flight = new Flight(plane, "9am", FlightNo.JA03Y, Airport.SCHIPOL, Airport.ABERDEEN);
+        flight = new Flight(plane, "09:00:00", FlightNo.JA03Y, Airport.SCHIPOL, Airport.ABERDEEN);
         this.flightManager = new FlightManager(flight);
     }
 
@@ -45,5 +46,12 @@ public class FlightManagerTest {
         flight.addPassenger(passenger2);
         flight.addPassenger(passenger3);
         assertEquals(10, flightManager.getRemainingBaggageSpace(), 0.01);
+    }
+
+    @Test
+    public void canUpdateFlightAndPassngerDetails() {
+        flightManager.updateFlightAndPassengerOnBooking(passenger1, flight);
+        assertEquals("Flight", passenger1.getFlightDetail().getClass().getName());
+        assertNotNull(passenger1.getSeatNumber());
     }
 }

@@ -11,6 +11,7 @@ public class Flight {
     private Airport departureAirport;
     private Airport destinationAirport;
     private String stringTime;
+    private ArrayList<Integer> seatsBooked;
 
 
     String timeFormat = "HH:mm:ss";
@@ -28,6 +29,7 @@ public class Flight {
         this.departureAirport = departureAirport;
         this.destinationAirport = destinationAirport;
         this.passengerList = new ArrayList<Passenger>();
+        this.seatsBooked = new ArrayList<Integer>();
     }
 //I have read everything on the parseexception and I understand it happens and that is why we use try catch but why
 // does it work with the catch.  isnt that just catching the error which would still still lead to the test not
@@ -49,6 +51,7 @@ public class Flight {
     public void addPassenger(Passenger passenger) {
         if (confirmSeatsRemaining()) {
             this.passengerList.add(passenger);
+
         }
     }
 
@@ -62,5 +65,8 @@ public class Flight {
 
     public Date getDepartureTime() {
         return this.departureTime;
+    }
+    public ArrayList<Integer> getSeatsBooked(){
+        return this.seatsBooked;
     }
 }
