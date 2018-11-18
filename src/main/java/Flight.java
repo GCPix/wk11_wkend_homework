@@ -66,6 +66,10 @@ public class Flight {
     public Date getDepartureTime() {
         return this.departureTime;
     }
+    public void addSeatToBookedSeats(int seat){
+        this.seatsBooked.add(seat);
+    }
+
     public ArrayList<Integer> getSeatsBooked(){
         return this.seatsBooked;
     }

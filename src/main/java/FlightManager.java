@@ -31,16 +31,19 @@ public class FlightManager {
         flight.addPassenger(passenger);
         passenger.addFlightDetailToPassenger(flight);
         int max = flight.getFlightCapacity();
+        seatNumber = getRandomSeat(1, max);
 
         while (flight.getSeatsBooked().contains(seatNumber))
         {
             seatNumber = getRandomSeat(1, max);
+
         }
+        flight.addSeatToBookedSeats(seatNumber);
         passenger.addSeatNumberToPassenger(seatNumber);
         passenger.addFlightDetailToPassenger(flight);
     }
 
-    private static int getRandomSeat(int min, int max) {
+    public int getRandomSeat(int min, int max) {
         Random r = new Random();
         return r.nextInt((max - min) + 1) + min;//still need to understand how this works
     }
